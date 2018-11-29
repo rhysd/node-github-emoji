@@ -13,16 +13,17 @@ Features:
   - File name (e.g. `1f436.png`)
 - TypeScript ready
   - Emoji name is typed as a union of string literal types. Compiler can check emoji name is correct.
+- Zero dependency
 
 ```javascript
 const emoji = require('github-emoji');
 
-console.log('All emoji information as Map', emoji.all());
+console.log('All emoji information as Map',      emoji.all());
 console.log('Get properties of emoji as object', emoji.of('dog'));
-console.log('Get emoji string from name', emoji.stringOf('dog'));
-console.log('Get emoji name from emoji string', emoji.nameOf('🐶'));
-console.log('Check the string is emoji name or not', emoji.isName('dog'));
-console.log('Check the string is emoji or not', emoji.isEmoji('🐶'));
+console.log('Get emoji string from name',        emoji.stringOf('dog'));
+console.log('Get emoji name from emoji string',  emoji.nameOf('🐶'));
+console.log('Check the string is emoji name',    emoji.isName('dog'));
+console.log('Check the string is emoji',         emoji.isEmoji('🐶'));
 ```
 
 Please see [index.d.ts](index.d.ts) for interface.
@@ -35,3 +36,6 @@ import * as emoji from 'github-emoji';
 emoji.of('dog'); // OK
 emoji.of('doggo'); // COMPILE ERROR!
 ```
+
+You may need to add `--resolveJsonModule` to `tsc` or `"resolveJsonModule": true` in `compilerOptions`
+section of `tsconfig.json` to compile this library.
