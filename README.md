@@ -33,16 +33,15 @@ console.log('Get emoji string from name',        emoji.stringOf('dog'));
 console.log('Get emoji name from emoji string',  emoji.nameOf('🐶'));
 console.log('Check the string is emoji name',    emoji.isName('dog'));
 console.log('Check the string is emoji',         emoji.isEmoji('🐶'));
+console.log('Object of name => URL',             emoji.URLS);
 ```
-
-Please see [index.d.ts](index.d.ts) for interface.
 
 This library is ready for [TypeScript](https://www.typescriptlang.org/).
 
 ```typescript
 import * as emoji from 'github-emoji';
 
-emoji.of('dog'); // OK
+emoji.of('dog');   // OK
 emoji.of('doggo'); // COMPILE ERROR!
 ```
 
