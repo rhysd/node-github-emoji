@@ -1,7 +1,6 @@
 GitHub Emoji Library for Node.js typed with TypeScript
 ======================================================
 [![npm version][]][npm]
-[![codecov badge][]][codecov]
 [![travis badge][]][travis]
 [![appveyor badge][]][appveyor]
 
@@ -62,5 +61,3 @@ configuration. `--target` must be `es2015` or later.
 [travis]: https://travis-ci.org/rhysd/node-github-emoji
 [appveyor badge]: https://ci.appveyor.com/api/projects/status/xaq1x7rid0ikbixq/branch/master?svg=true
 [appveyor]: https://ci.appveyor.com/project/rhysd/node-github-emoji/branch/master
-[codecov badge]: https://codecov.io/gh/rhysd/node-github-emoji/branch/master/graph/badge.svg
-[codecov]: https://codecov.io/gh/rhysd/node-github-emoji
