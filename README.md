@@ -16,7 +16,7 @@ Features:
   - Emoji name is typed as a union of string literal types. Compiler can check emoji name is correct.
 - Zero dependency
 
-Isntallation:
+Installation:
 
 ```
 npm install --save github-emoji
