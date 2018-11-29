@@ -1,14 +1,22 @@
 {
   "name": "github-emoji",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "GitHub emoji collection",
   "main": "index.js",
+  "files": [
+    "README.md",
+    "LICENSE.txt",
+    "images",
+    "index.d.ts",
+    "index.js"
+  ],
   "scripts": {
     "dts": "tsc -p src -d",
-    "build": "tsc -p src",
+    "tsc": "tsc -p src",
+    "build": "npm-run-all -p tsc dts",
     "watch": "tsc -p src --watch",
     "update-emoji": "bash ./scripts/update-emooji.sh",
-    "update": "npm-run-all update-emoji build dts",
+    "update": "npm-run-all update-emoji build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
