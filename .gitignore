@@ -1,6 +1,7 @@
 /node_modules
-/*.js
-/*.js.map
+/index.js
+/index.js.map
 /images/*.png
 /index.d.ts
 /emoji.json
+/coverage
