@@ -1,0 +1,23 @@
+{
+  "name": "github-emoji",
+  "version": "0.0.0",
+  "description": "GitHub emoji collection",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rhysd/github-emoji.git"
+  },
+  "keywords": [
+    "GitHub",
+    "emoji"
+  ],
+  "author": "rhysd <https://github.com/rhysd>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rhysd/github-emoji/issues"
+  },
+  "homepage": "https://github.com/rhysd/github-emoji#readme"
+}
