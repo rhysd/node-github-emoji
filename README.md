@@ -1,5 +1,6 @@
 GitHub Emoji Library for Node.js typed with TypeScript
 ======================================================
+[![npm version](https://badge.fury.io/js/github-emoji.svg)](https://www.npmjs.com/package/github-emoji)
 
 Small [npm package](https://www.npmjs.com/package/github-emoji) for GitHub Emoji typed with TypeScript.
 
@@ -14,6 +15,14 @@ Features:
 - TypeScript ready
   - Emoji name is typed as a union of string literal types. Compiler can check emoji name is correct.
 - Zero dependency
+
+Isntallation:
+
+```
+npm install --save github-emoji
+```
+
+Usage:
 
 ```javascript
 const emoji = require('github-emoji');
