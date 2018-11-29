@@ -2,7 +2,7 @@ GitHub Emoji Library for Node.js typed with TypeScript
 ======================================================
 [![npm version][]][npm]
 [![codecov badge][]][codecov]
-[![travis badge][]][]
+[![travis badge][]][travis]
 [![appveyor badge][]][appveyor]
 
 Small [npm package](https://www.npmjs.com/package/github-emoji) for GitHub Emoji typed with TypeScript.
