@@ -45,23 +45,25 @@ function emojiOf(name: EmojiName): Emoji {
     };
 }
 
+function buildStringToName(checkEmoji: string): EmojiName | null {
+    stringToName = new Map();
+    let ret: EmojiName | null = null;
+    for (const [name, info] of all().entries()) {
+        if (info.string !== null) {
+            stringToName.set(info.string, name as EmojiName);
+            if (info.string === checkEmoji) {
+                ret = name as EmojiName;
+            }
+        }
+    }
+    return ret;
+}
+
 export function isEmoji(emoji: string): boolean {
     if (stringToName !== null) {
         return stringToName.has(emoji);
     }
-
-    stringToName = new Map();
-    let found = false;
-    for (const [name, info] of all().entries()) {
-        if (info.string !== null) {
-            stringToName.set(info.string, name as EmojiName);
-            if (info.string === emoji) {
-                found = true;
-            }
-        }
-    }
-
-    return found;
+    return buildStringToName(emoji) !== null;
 }
 
 export function nameOf(emoji: string): EmojiName | null {
@@ -69,19 +71,7 @@ export function nameOf(emoji: string): EmojiName | null {
         const name = stringToName.get(emoji);
         return name || null;
     }
-
-    stringToName = new Map();
-    let ret: EmojiName | null = null;
-    for (const [name, info] of all().entries()) {
-        if (info.string !== null) {
-            stringToName.set(info.string, name as EmojiName);
-            if (info.string === emoji) {
-                ret = name as EmojiName;
-            }
-        }
-    }
-
-    return ret;
+    return buildStringToName(emoji);
 }
 
 export function isName(name: string): name is EmojiName {
