@@ -1,12 +1,13 @@
 {
   "name": "github-emoji",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "GitHub emoji collection",
   "main": "index.js",
   "files": [
     "README.md",
     "LICENSE.txt",
     "images",
+    "emoji.json",
     "index.d.ts",
     "index.js"
   ],
