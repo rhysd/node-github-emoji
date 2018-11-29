@@ -1,0 +1,28 @@
+{
+    "defaultSeverity": "error",
+    "extends": [
+        "tslint:recommended"
+    ],
+    "jsRules": {},
+    "rules": {
+        "max-line-length": false,
+        "quotemark": [
+            true,
+            "single",
+            "jsx-double"
+        ],
+        "ordered-imports": false,
+        "interface-name": [
+            true,
+            "never-prefix"
+        ],
+        "arrow-parens": false,
+        "object-literal-sort-keys": false
+    },
+    "rulesDirectory": [],
+    "linterOptions": {
+        "exclude": [
+            "src/emoji.json"
+        ]
+    }
+}

@@ -1,6 +1,6 @@
 {
   "name": "github-emoji",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "GitHub emoji collection",
   "main": "index.js",
   "files": [
@@ -17,10 +17,13 @@
     "build": "npm-run-all -p tsc dts",
     "watch": "tsc -p src --watch",
     "update-emoji": "bash ./scripts/update-emooji.sh",
-    "update": "npm-run-all update-emoji build",
+    "update": "npm-run-all update-emoji build test lint",
     "test": "jest",
+    "lint": "tslint -p src",
     "coverage": "jest --coverage",
-    "watch-test": "jest --watch"
+    "watch-test": "jest --watch",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm-run-all test lint"
   },
   "repository": {
     "type": "git",
@@ -42,6 +45,7 @@
     "jest": "^23.6.0",
     "npm-run-all": "^4.1.5",
     "ts-jest": "^23.10.5",
+    "tslint": "^5.11.0",
     "typescript": "^3.1.6"
   }
 }
