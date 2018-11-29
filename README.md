@@ -45,5 +45,8 @@ emoji.of('dog');   // OK
 emoji.of('doggo'); // COMPILE ERROR!
 ```
 
+Please see `github-emoji/index.d.ts` for all APIs.
+
 You may need to add `--resolveJsonModule` to `tsc` or `"resolveJsonModule": true` in `compilerOptions`
-section of `tsconfig.json` to compile this library.
+section of `tsconfig.json` to compile this library. `--outDir` would be also necessary in compile
+configuration. `--target` must be `es2015` or later.
