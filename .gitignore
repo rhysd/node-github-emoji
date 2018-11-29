@@ -1,1 +1,6 @@
 /node_modules
+/*.js
+/*.js.map
+/images/*.png
+/index.d.ts
+/emoji.json

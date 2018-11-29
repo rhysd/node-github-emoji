@@ -4,11 +4,16 @@
   "description": "GitHub emoji collection",
   "main": "index.js",
   "scripts": {
+    "dts": "tsc -p src -d",
+    "build": "tsc -p src",
+    "watch": "tsc -p src --watch",
+    "update-emoji": "bash ./scripts/update-emooji.sh",
+    "update": "npm-run-all update-emoji build dts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rhysd/github-emoji.git"
+    "url": "git+https://github.com/rhysd/node-github-emoji.git"
   },
   "keywords": [
     "GitHub",
@@ -17,7 +22,12 @@
   "author": "rhysd <https://github.com/rhysd>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/rhysd/github-emoji/issues"
+    "url": "https://github.com/rhysd/node-github-emoji/issues"
   },
-  "homepage": "https://github.com/rhysd/github-emoji#readme"
+  "homepage": "https://github.com/rhysd/node-github-emoji#readme",
+  "devDependencies": {
+    "@types/node": "^10.12.10",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^3.1.6"
+  }
 }
