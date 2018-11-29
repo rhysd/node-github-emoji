@@ -1,6 +1,9 @@
 GitHub Emoji Library for Node.js typed with TypeScript
 ======================================================
-[![npm version](https://badge.fury.io/js/github-emoji.svg)](https://www.npmjs.com/package/github-emoji)
+[![npm version][]][npm]
+[![codecov badge][]][codecov]
+[![travis badge][]][]
+[![appveyor badge][]][appveyor]
 
 Small [npm package](https://www.npmjs.com/package/github-emoji) for GitHub Emoji typed with TypeScript.
 
@@ -50,3 +53,14 @@ Please see `github-emoji/index.d.ts` for all APIs.
 You may need to add `--resolveJsonModule` to `tsc` or `"resolveJsonModule": true` in `compilerOptions`
 section of `tsconfig.json` to compile this library. `--outDir` would be also necessary in compile
 configuration. `--target` must be `es2015` or later.
+
+
+
+[npm version]: https://badge.fury.io/js/github-emoji.svg
+[npm]: https://www.npmjs.com/package/github-emoji
+[travis badge]: https://travis-ci.org/rhysd/node-github-emoji.svg?branch=master
+[travis]: https://travis-ci.org/rhysd/node-github-emoji
+[appveyor badge]: https://ci.appveyor.com/api/projects/status/xaq1x7rid0ikbixq/branch/master?svg=true
+[appveyor]: https://ci.appveyor.com/project/rhysd/node-github-emoji/branch/master
+[codecov badge]: https://codecov.io/gh/rhysd/node-github-emoji/branch/master/graph/badge.svg
+[codecov]: https://codecov.io/gh/rhysd/node-github-emoji
