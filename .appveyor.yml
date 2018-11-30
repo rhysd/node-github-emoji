@@ -11,7 +11,7 @@ test_script:
     - npm run coverage
 after_test:
     - npm install -g codecov
-    - codecov
+    - .\node_modules\.bin\nyc report --reporter=text-lcov > coverage.lcov && codecov
 deploy: off
 notifications:
     - provider: Email
