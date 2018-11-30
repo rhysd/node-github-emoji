@@ -89,7 +89,7 @@ describe('all()', function() {
     });
     it('returns all properties of all emojis', function() {
         emoji.all().forEach((e, name) => {
-            assert.include(e.name, name);
+            eq(e.name, name);
             assert.isTrue(emoji.isName(e.name));
             eq(emoji.stringOf(e.name), e.string);
             assert.match(e.url, /\.png\?v\d+$/);
