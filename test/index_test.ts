@@ -21,16 +21,31 @@ describe('isEmoji()', function() {
 
 describe('nameOf()', function() {
     it('gets name of emojis', function() {
-        deq(emoji.nameOf('🐶'), ['dog']);
-        deq(emoji.nameOf('🐕'), ['dog2']);
+        eq(emoji.nameOf('🐶'), 'dog');
+        eq(emoji.nameOf('🐕'), 'dog2');
     });
-    it('gets multiple names of emoji', function() {
-        deq(emoji.nameOf('👍'), ['+1', 'thumbsup']);
+    it('gets one of multiple names of emoji', function() {
+        eq(emoji.nameOf('👍'), '+1');
     });
     it('returns null for not a emoji', function() {
-        assert.isEmpty(emoji.nameOf('dog'));
-        assert.isEmpty(emoji.nameOf('犬'));
-        assert.isEmpty(emoji.nameOf('✧＼٩(U‘ω’U)و /／✧'));
+        assert.isNull(emoji.nameOf('dog'));
+        assert.isNull(emoji.nameOf('犬'));
+        assert.isNull(emoji.nameOf('✧＼٩(U‘ω’U)و /／✧'));
+    });
+});
+
+describe('namesOf()', function() {
+    it('returns names of emojis', function() {
+        deq(emoji.namesOf('🐶'), ['dog']);
+        deq(emoji.namesOf('🐕'), ['dog2']);
+    });
+    it('returns multiple names of emoji', function() {
+        deq(emoji.namesOf('👍'), ['+1', 'thumbsup']);
+    });
+    it('returns empty array for not a emoji', function() {
+        assert.isEmpty(emoji.namesOf('dog'));
+        assert.isEmpty(emoji.namesOf('犬'));
+        assert.isEmpty(emoji.namesOf('✧＼٩(U‘ω’U)و /／✧'));
     });
 });
 
@@ -99,7 +114,7 @@ describe('all()', function() {
             assert.include(e.path, e.file);
             if (e.string !== null) {
                 assert.isTrue(emoji.isEmoji(e.string));
-                const names = emoji.nameOf(e.string);
+                const names = emoji.namesOf(e.string);
                 assert.include(names, e.name);
             }
         });

@@ -72,7 +72,15 @@ export function isEmoji(emoji: string): boolean {
     return buildStringToName(emoji).length > 0;
 }
 
-export function nameOf(emoji: string): EmojiName[] {
+export function nameOf(emoji: string): EmojiName | null {
+    const names = namesOf(emoji);
+    if (names.length === 0) {
+        return null;
+    }
+    return names[0];
+}
+
+export function namesOf(emoji: string): EmojiName[] {
     if (stringToName !== null) {
         const name = stringToName.get(emoji);
         return name || [];
