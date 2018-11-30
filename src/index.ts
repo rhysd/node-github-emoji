@@ -14,7 +14,7 @@ export interface Emoji {
 export type Emojis = Map<string, Emoji>;
 
 let cache: Emojis | null = null;
-let stringToName: Map<string, EmojiName> | null = null;
+let stringToName: Map<string, EmojiName[]> | null = null;
 const IMAGES_BASE = join(__dirname, 'images');
 const RE_HEX = /^[0-9a-f-]+$/;
 
@@ -45,14 +45,20 @@ function emojiOf(name: EmojiName): Emoji {
     };
 }
 
-function buildStringToName(checkEmoji: string): EmojiName | null {
+function buildStringToName(checkEmoji: string): EmojiName[] {
     stringToName = new Map();
-    let ret: EmojiName | null = null;
+    let ret: EmojiName[] = [];
     for (const [name, info] of all().entries()) {
         if (info.string !== null) {
-            stringToName.set(info.string, name as EmojiName);
+            let arr = stringToName.get(info.string);
+            if (arr === undefined) {
+                arr = [name as EmojiName];
+                stringToName.set(info.string, arr);
+            } else {
+                arr.push(name as EmojiName);
+            }
             if (info.string === checkEmoji) {
-                ret = name as EmojiName;
+                ret = arr;
             }
         }
     }
@@ -63,13 +69,13 @@ export function isEmoji(emoji: string): boolean {
     if (stringToName !== null) {
         return stringToName.has(emoji);
     }
-    return buildStringToName(emoji) !== null;
+    return buildStringToName(emoji).length > 0;
 }
 
-export function nameOf(emoji: string): EmojiName | null {
+export function nameOf(emoji: string): EmojiName[] {
     if (stringToName !== null) {
         const name = stringToName.get(emoji);
-        return name || null;
+        return name || [];
     }
     return buildStringToName(emoji);
 }

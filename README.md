@@ -30,13 +30,13 @@ Usage:
 ```javascript
 const emoji = require('github-emoji');
 
-console.log('All emoji information as Map',      emoji.all());
-console.log('Get properties of emoji as object', emoji.of('dog'));
-console.log('Get emoji string from name',        emoji.stringOf('dog'));
-console.log('Get emoji name from emoji string',  emoji.nameOf('🐶'));
-console.log('Check the string is emoji name',    emoji.isName('dog'));
-console.log('Check the string is emoji',         emoji.isEmoji('🐶'));
-console.log('Object of name => URL',             emoji.URLS);
+console.log('All emoji information as Map',                emoji.all());           // Map{ '+1' => {...}, ... }
+console.log('Get properties of emoji as object',           emoji.of('dog'));       // { string: '🐶', ... }
+console.log('Get emoji string from name',                  emoji.stringOf('dog')); // '🐶'
+console.log('Get emoji names from emoji string as array',  emoji.nameOf('👍'));    // ['+1', 'thumbsup']
+console.log('Check the string is emoji name',              emoji.isName('dog'));   // true
+console.log('Check the string is emoji',                   emoji.isEmoji('🐶'));;  // true
+console.log('Object of name => URL',                       emoji.URLS);            // { '+1': 'https://...', ... }
 ```
 
 This library is ready for [TypeScript](https://www.typescriptlang.org/).
