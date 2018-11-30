@@ -4,7 +4,7 @@ import { join, basename } from 'path';
 export { URLS };
 export type EmojiName = keyof typeof URLS;
 export interface Emoji {
-    name: EmojiName;
+    name: EmojiName[];
     url: string;
     file: string;
     path: string;
@@ -14,7 +14,7 @@ export interface Emoji {
 export type Emojis = Map<string, Emoji>;
 
 let cache: Emojis | null = null;
-let stringToName: Map<string, EmojiName[]> | null = null;
+let index: Map<string, EmojiName[]> | null = null;
 const IMAGES_BASE = join(__dirname, 'images');
 const RE_HEX = /^[0-9a-f-]+$/;
 
@@ -33,51 +33,51 @@ function strOf(file: string): string | null {
     return String.fromCodePoint(...base.split('-').map(s => parseInt(s, 16)));
 }
 
-function emojiOf(name: EmojiName): Emoji {
-    const url = URLS[name];
-    const file = fileOf(url);
-    return {
-        name,
-        url,
-        file,
-        path: join(IMAGES_BASE, file),
-        string: strOf(file),
-    };
-}
+function buildCache(): Emojis {
+    cache = new Map();
+    index = new Map();
+    for (const name of Object.keys(URLS)) {
+        const url = URLS[name as EmojiName];
+        const file = fileOf(url);
+        const str = strOf(file);
 
-function buildStringToName(checkEmoji: string): EmojiName[] {
-    stringToName = new Map();
-    let ret: EmojiName[] = [];
-    for (const [name, info] of all().entries()) {
-        if (info.string !== null) {
-            let arr = stringToName.get(info.string);
+        let names: EmojiName[] = [];
+        if (str !== null) {
+            const arr = index.get(str);
             if (arr === undefined) {
-                arr = [name as EmojiName];
-                stringToName.set(info.string, arr);
+                names = [name as EmojiName];
+                index.set(str, names);
             } else {
                 arr.push(name as EmojiName);
-            }
-            if (info.string === checkEmoji) {
-                ret = arr;
+                names = arr;
             }
         }
+
+        const emoji = {
+            name: names,
+            url,
+            file,
+            path: join(IMAGES_BASE, file),
+            string: str,
+        };
+        cache.set(name as EmojiName, emoji);
     }
-    return ret;
+    return cache;
+}
+
+function stringToName(): Map<string, EmojiName[]> {
+    if (index === null) {
+        buildCache();
+    }
+    return index!;
 }
 
 export function isEmoji(emoji: string): boolean {
-    if (stringToName !== null) {
-        return stringToName.has(emoji);
-    }
-    return buildStringToName(emoji).length > 0;
+    return stringToName().has(emoji);
 }
 
 export function nameOf(emoji: string): EmojiName[] {
-    if (stringToName !== null) {
-        const name = stringToName.get(emoji);
-        return name || [];
-    }
-    return buildStringToName(emoji);
+    return stringToName().get(emoji) || [];
 }
 
 export function isName(name: string): name is EmojiName {
@@ -95,23 +95,16 @@ export function stringOf(name: string): string | null {
 }
 
 export function of(name: string): Emoji {
-    if (!(name in URLS)) {
+    const e = all().get(name);
+    if (e === undefined) {
         throw new Error(`Emoji named '${name}' not found`);
     }
-    if (cache !== null) {
-        return cache.get(name)!;
-    }
-    return emojiOf(name as EmojiName);
+    return e;
 }
 
 export function all(): Emojis {
-    if (cache !== null) {
-        return cache;
+    if (cache === null) {
+        buildCache();
     }
-    cache = new Map();
-
-    for (const key of Object.keys(URLS)) {
-        cache.set(key, emojiOf(key as EmojiName));
-    }
-    return cache;
+    return cache!;
 }
