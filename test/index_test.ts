@@ -98,15 +98,26 @@ describe('of()', function() {
     });
 });
 
+function isString(v: any): v is string {
+    if (typeof v !== 'string') {
+        throw new Error('Type is not string:' + typeof v);
+    }
+    return true;
+}
+
 describe('all()', function() {
     it('returns multiple emojis', function() {
         assert.isAbove(emoji.all().size, 1);
     });
     it('returns all properties of all emojis', function() {
-        emoji.all().forEach((e, name) => {
-            eq(e.name, name);
-            assert.isTrue(emoji.isName(e.name));
-            eq(emoji.stringOf(e.name), e.string);
+        emoji.all().forEach((e, expected) => {
+            const actual = e.name;
+            if (!isString(actual)) {
+                return;
+            }
+            eq(actual, expected);
+            assert.isTrue(emoji.isName(actual));
+            eq(emoji.stringOf(actual), e.string);
             assert.match(e.url, /\.png\?v\d+$/);
             assert.match(e.url, /^https:\/\//);
             assert.include(e.url, e.file);
@@ -115,7 +126,7 @@ describe('all()', function() {
             if (e.string !== null) {
                 assert.isTrue(emoji.isEmoji(e.string));
                 const names = emoji.namesOf(e.string);
-                assert.include(names, e.name);
+                assert.include(names, actual);
             }
         });
     });

@@ -40,15 +40,15 @@
   },
   "homepage": "https://github.com/rhysd/node-github-emoji#readme",
   "devDependencies": {
-    "@types/chai": "^4.1.7",
-    "@types/mocha": "^5.2.5",
-    "@types/node": "^10.12.10",
+    "@types/chai": "^4.2.3",
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^12.7.8",
     "chai": "^4.2.0",
-    "mocha": "^5.2.0",
+    "mocha": "^6.2.1",
     "npm-run-all": "^4.1.5",
-    "nyc": "^13.1.0",
-    "ts-node": "^7.0.1",
-    "tslint": "^5.11.0",
-    "typescript": "^3.1.6"
+    "nyc": "^14.1.1",
+    "ts-node": "^8.4.1",
+    "tslint": "^5.20.0",
+    "typescript": "^3.6.3"
   }
 }
