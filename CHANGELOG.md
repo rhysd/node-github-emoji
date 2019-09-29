@@ -1,3 +1,12 @@
+<a name="v1.1.1"></a>
+# [v1.1.1](https://github.com/rhysd/node-github-emoji/releases/tag/v1.1.1) - 29 Sep 2019
+
+- Emoji URLs were updated by GitHub (`assets-cdn.github.com` -> `github.githubassets.com`)
+- Large dev dependencies updates
+
+[Changes][v1.1.1]
+
+
 <a name="v1.1.0"></a>
 # [v1.1.0](https://github.com/rhysd/node-github-emoji/releases/tag/v1.1.0) - 30 Nov 2018
 
@@ -40,6 +49,7 @@ First release :tada:
 [Changes][v1.0.0]
 
 
+[v1.1.1]: https://github.com/rhysd/node-github-emoji/compare/v1.1.0...v1.1.1
 [v1.1.0]: https://github.com/rhysd/node-github-emoji/compare/v1.0.2...v1.1.0
 [v1.0.2]: https://github.com/rhysd/node-github-emoji/compare/v1.0.1...v1.0.2
 [v1.0.1]: https://github.com/rhysd/node-github-emoji/compare/v1.0.0...v1.0.1
