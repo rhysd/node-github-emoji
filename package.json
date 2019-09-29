@@ -16,7 +16,7 @@
     "tsc": "tsc -p src",
     "build": "npm-run-all -p tsc dts",
     "watch": "tsc -p src --watch",
-    "update-emoji": "bash ./scripts/update-emooji.sh",
+    "update-emoji": "bash ./scripts/update-emoji.sh",
     "update": "npm-run-all update-emoji build test lint",
     "test": "mocha test/*.ts",
     "lint": "tslint -p src",
