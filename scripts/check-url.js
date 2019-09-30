@@ -1,21 +1,23 @@
 const fetch = require('node-fetch');
 
-function main() {
+async function main() {
     const emoji = require('..');
     const dog = emoji.of('dog');
     console.log('Trying to fetch URL:', dog.url);
-    return fetch(dog.url);
-}
 
-main()
-    .catch(err => {
-        console.error('Failed to fetch', err);
-        process.exit(1);
-    })
-    .then(res => {
+    try {
+        const res = await fetch(dog.url);
         if (!res.ok) {
             console.error('Response is not successful', res);
-            process.exit(1);
+            return 1;
         }
-        console.log('OK:');
-    });
+
+        console.log('OK!');
+        return 0;
+    } catch (err) {
+        console.error('Failed to fetch', err);
+        return 1;
+    }
+}
+
+main().then(process.exit);
