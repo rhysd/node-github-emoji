@@ -76,6 +76,17 @@ describe('stringOf()', function() {
     });
 });
 
+describe('urlOf()', function() {
+    it('returns URL for correct names', function() {
+        eq(emoji.urlOf('dog'), 'https://github.githubassets.com/images/icons/emoji/unicode/1f436.png?v8');
+        eq(emoji.urlOf('octocat'), 'https://github.githubassets.com/images/icons/emoji/octocat.png?v8');
+    });
+    it('throws an exception for not a emoji', function() {
+        assert.throws(() => emoji.urlOf('doggo' as emoji.EmojiName), "Emoji named 'doggo' not found");
+        assert.throws(() => emoji.urlOf('犬' as emoji.EmojiName), "Emoji named '犬' not found");
+    });
+});
+
 describe('of()', function() {
     it('returns all emoji properties for correct names', function() {
         const e = emoji.of('dog');

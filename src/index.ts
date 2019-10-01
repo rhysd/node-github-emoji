@@ -102,6 +102,13 @@ export function stringOf(name: EmojiName): string | null {
     return strOf(fileOf(URLS[name]));
 }
 
+export function urlOf(name: EmojiName): string {
+    if (!(name in URLS)) {
+        throw new Error(`Emoji named '${name}' not found`);
+    }
+    return URLS[name];
+}
+
 export function of(name: EmojiName): Emoji {
     if (!(name in URLS)) {
         throw new Error(`Emoji named '${name}' not found`);
