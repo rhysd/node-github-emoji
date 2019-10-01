@@ -1,7 +1,7 @@
 const fetch = require('node-fetch');
+const emoji = require('..');
 
 async function main() {
-    const emoji = require('..');
     const dog = emoji.of('dog');
     console.log('Trying to fetch URL:', dog.url);
 

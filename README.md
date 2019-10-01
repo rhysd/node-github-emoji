@@ -11,13 +11,13 @@ Features:
 
 - Get properties of each emoji
   - Name (e.g. `dog`)
-  - URL (e.g. `https://assets-cdn.github.com/images/icons/emoji/unicode/1f436.png?v8`)
+  - URL (e.g. `https://github.githubassets.com/images/icons/emoji/unicode/1f436.png?v8`)
   - String (e.g. `🐶`)
   - File path to emoji file (e.g. `/path/to/github-emoji/images/1f436.png`)
   - File name (e.g. `1f436.png`)
 - TypeScript ready
   - Emoji name is typed as a union of string literal types. Compiler can check emoji name is correct.
-- Zero dependency
+- Zero runtime dependency
 
 Installation:
 
