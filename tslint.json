@@ -9,6 +9,7 @@
         "quotemark": [
             true,
             "single",
+            "avoid-escape",
             "jsx-double"
         ],
         "ordered-imports": false,
