@@ -65,27 +65,27 @@ function buildStringToName(checkEmoji: string): EmojiName[] {
     return ret;
 }
 
-export function isEmoji(emojiString: string): boolean {
+export function isEmoji(emoji: string): boolean {
     if (stringToName !== null) {
-        return stringToName.has(emojiString);
+        return stringToName.has(emoji);
     }
-    return buildStringToName(emojiString).length > 0;
+    return buildStringToName(emoji).length > 0;
 }
 
-export function nameOf(emojiString: string): EmojiName | null {
-    const names = namesOf(emojiString);
+export function nameOf(emoji: string): EmojiName | null {
+    const names = namesOf(emoji);
     if (names.length === 0) {
         return null;
     }
     return names[0];
 }
 
-export function namesOf(emojiString: string): EmojiName[] {
+export function namesOf(emoji: string): EmojiName[] {
     if (stringToName !== null) {
-        const name = stringToName.get(emojiString);
+        const name = stringToName.get(emoji);
         return name || [];
     }
-    return buildStringToName(emojiString);
+    return buildStringToName(emoji);
 }
 
 export function isName(name: string): name is EmojiName {
@@ -109,7 +109,7 @@ export function of(name: EmojiName): Emoji {
     if (cache !== null) {
         return cache.get(name)!;
     }
-    return emojiOf(name as EmojiName);
+    return emojiOf(name);
 }
 
 export function all(): Emojis {

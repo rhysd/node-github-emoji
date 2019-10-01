@@ -94,7 +94,7 @@ describe('of()', function() {
     });
     it('returns all emoji properties but string is null for non-unicode emoji', function() {
         const e = emoji.of('octocat');
-        assert.isNull(e.string, null);
+        assert.isNull(e.string);
     });
 });
 
