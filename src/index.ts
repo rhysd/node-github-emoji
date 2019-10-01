@@ -65,44 +65,44 @@ function buildStringToName(checkEmoji: string): EmojiName[] {
     return ret;
 }
 
-export function isEmoji(emoji: string): boolean {
+export function isEmoji(emojiString: string): boolean {
     if (stringToName !== null) {
-        return stringToName.has(emoji);
+        return stringToName.has(emojiString);
     }
-    return buildStringToName(emoji).length > 0;
+    return buildStringToName(emojiString).length > 0;
 }
 
-export function nameOf(emoji: string): EmojiName | null {
-    const names = namesOf(emoji);
+export function nameOf(emojiString: string): EmojiName | null {
+    const names = namesOf(emojiString);
     if (names.length === 0) {
         return null;
     }
     return names[0];
 }
 
-export function namesOf(emoji: string): EmojiName[] {
+export function namesOf(emojiString: string): EmojiName[] {
     if (stringToName !== null) {
-        const name = stringToName.get(emoji);
+        const name = stringToName.get(emojiString);
         return name || [];
     }
-    return buildStringToName(emoji);
+    return buildStringToName(emojiString);
 }
 
 export function isName(name: string): name is EmojiName {
     return name in URLS;
 }
 
-export function stringOf(name: string): string | null {
+export function stringOf(name: EmojiName): string | null {
     if (!(name in URLS)) {
         throw new Error(`Emoji named '${name}' not found`);
     }
     if (cache !== null) {
         return cache.get(name)!.string;
     }
-    return strOf(fileOf(URLS[name as EmojiName]));
+    return strOf(fileOf(URLS[name]));
 }
 
-export function of(name: string): Emoji {
+export function of(name: EmojiName): Emoji {
     if (!(name in URLS)) {
         throw new Error(`Emoji named '${name}' not found`);
     }

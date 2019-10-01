@@ -47,6 +47,12 @@ import * as emoji from 'github-emoji';
 
 emoji.of('dog');   // OK
 emoji.of('doggo'); // COMPILE ERROR!
+
+// If you want to use string value for emoji name, please assert the string value
+// is emoji name using `as`.
+import {EmojiName} from 'github-emoji';
+const someName: string = ...;
+emoji.of(someName as EmojiName); // OK
 ```
 
 Please see `github-emoji/index.d.ts` for all APIs.
@@ -55,6 +61,11 @@ You may need to add `--resolveJsonModule` to `tsc` or `"resolveJsonModule": true
 section of `tsconfig.json` to compile this library. `--outDir` would be also necessary in compile
 configuration. `--target` must be `es2015` or later.
 
+For example:
+
+```
+tsc your_source.ts --resolveJsonModule --target es2015 --esModuleInterop --moduleResolution node --module commonjs
+```
 
 
 [npm version]: https://badge.fury.io/js/github-emoji.svg
