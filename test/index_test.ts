@@ -67,8 +67,8 @@ describe('stringOf()', function() {
         eq(emoji.stringOf('dog2'), '🐕');
     });
     it('throws an exception for not a emoji', function() {
-        assert.throws(() => emoji.stringOf('doggo' as emoji.EmojiName), "Emoji named 'doggo' not found");
-        assert.throws(() => emoji.stringOf('犬' as emoji.EmojiName), "Emoji named '犬' not found");
+        assert.throws(() => emoji.stringOf('doggo' as emoji.EmojiName), 'Emoji named "doggo" not found');
+        assert.throws(() => emoji.stringOf('犬' as emoji.EmojiName), 'Emoji named "犬" not found');
     });
     it('returns null for non-unicode emoji', function() {
         assert.isNull(emoji.stringOf('shipit'));
@@ -89,8 +89,8 @@ describe('of()', function() {
         eq(e.name, 'dog');
     });
     it('throws an exception for not a emoji', function() {
-        assert.throws(() => emoji.of('doggo' as emoji.EmojiName), "Emoji named 'doggo' not found");
-        assert.throws(() => emoji.of('犬' as emoji.EmojiName), "Emoji named '犬' not found");
+        assert.throws(() => emoji.of('doggo' as emoji.EmojiName), 'Emoji named "doggo" not found');
+        assert.throws(() => emoji.of('犬' as emoji.EmojiName), 'Emoji named "犬" not found');
     });
     it('returns all emoji properties but string is null for non-unicode emoji', function() {
         const e = emoji.of('octocat');
