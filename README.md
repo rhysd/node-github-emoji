@@ -33,8 +33,8 @@ const emoji = require('github-emoji');
 console.log('All emoji information as Map',             emoji.all());           // Map{ '+1' => {...}, ... }
 console.log('Get properties of emoji as object',        emoji.of('dog'));       // { string: '🐶', ... }
 console.log('Get emoji string from name',               emoji.stringOf('dog')); // '🐶'
-console.log('Get emoji names from emoji string',        emoji.namesOf('👍'));   // ['+1', 'thumbsup']
-console.log('Get emoji one of names from emoji string', emoji.nameOf('👍'));    // '+1'
+console.log('Get all emoji names from emoji string',    emoji.namesOf('👍'));   // ['+1', 'thumbsup']
+console.log('Get one of emoji names from emoji string', emoji.nameOf('👍'));    // '+1'
 console.log('Get emoji URL from name',                  emoji.urlOf('dog'));    // 'https://...'
 console.log('Check the string is emoji name',           emoji.isName('dog'));   // true
 console.log('Check the string is emoji',                emoji.isEmoji('🐶'));   // true
