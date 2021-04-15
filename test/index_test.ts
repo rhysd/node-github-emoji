@@ -65,6 +65,8 @@ describe('stringOf()', function() {
     it('returns unicode emoji string for correct names', function() {
         eq(emoji.stringOf('dog'), '🐶');
         eq(emoji.stringOf('dog2'), '🐕');
+        eq(emoji.stringOf('+1'), '👍');
+        eq(emoji.stringOf('thumbsup'), '👍');
     });
     it('throws an exception for not a emoji', function() {
         assert.throws(() => emoji.stringOf('doggo' as emoji.EmojiName), "Emoji named 'doggo' not found");
